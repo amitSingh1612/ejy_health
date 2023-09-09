@@ -1,14 +1,16 @@
 import 'package:ejy_health/Widgets/CustomTextFormFeild.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-enum Gender{ male,female,other }
+
+import '../../../../../../../Models/profileDataModel.dart';
 
 class ProfileDetails extends StatefulWidget {
-  const ProfileDetails({
+  ProfileDetails({
     super.key,
     required this.mobileController,
     required this.dateOFBirthController,
     required this.addressController,
+
   });
 
   final TextEditingController mobileController;
@@ -23,7 +25,7 @@ class ProfileDetails extends StatefulWidget {
 }
 
 class _ProfileDetailsState extends State<ProfileDetails> {
-  Gender? onSelect;
+  Gender? selectedGender;
 
 
   @override
@@ -53,7 +55,8 @@ class _ProfileDetailsState extends State<ProfileDetails> {
 
             onChanged:(value){
               setState(() {
-                onSelect=value;
+                selectedGender= value;
+
               });
             },
             decoration: InputDecoration(
@@ -77,7 +80,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
 
           CustomTextFormField(
             controller:widget.dateOFBirthController,
-            textInputAction: TextInputAction.next,
+            //textInputAction: TextInputAction.next,
             labelText:" date",
             hintText: " DOB",
             prefixIcon: Icons.calendar_month,
